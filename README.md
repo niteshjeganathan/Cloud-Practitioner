@@ -4,7 +4,7 @@
 ### Cloud Service Models
 * IaaS - AWS EC2
 * PaaS - AWS Elastic Beanstalk
-* SaaS - Dropbox
+* SaaS - AWS Trusted Advisor
 
 ### Cloud Deployment Models
 * Cloud
@@ -37,6 +37,7 @@
     * Platform - Understand and communicate the nature of IT systems and their relationships
     * Security - Organisation must meet it's security objectives
     * Operations - Align and support the operations of the business
+
 
 ## Module 2 - Cloud Economics and Billing
 ### Drivers of Cost 
@@ -121,6 +122,21 @@
   * High
   * Urgent
   * Critical
+    
+### AWS Trusted Advisor
+* Analyses your AWS environment
+* Real-time guidance and recommendations to help you provision your resources
+* Offered as part of AWS support plan
+
+### AWS Shield
+* DDoS Protection Service
+* AWS Shield Advanced is available to everyone
+* Contacting DDoS Response Team requires Enterprise Support or Business Support from AWS Support
+
+### AWS Chime
+* Communications Service
+* Meet, chat, place business calls inside/outside of your organisation
+* Pay as you go service
 
 ## Module 3 - AWS Global Infrastructure Overview 
 ### AWS Infrastructure
@@ -145,6 +161,63 @@
   * Delivers a better near real-time user experience
   * Edge locations are located througout the world
   * Regional edge caches have data that is not frequently accessed enough to remain in an edge location
+ 
+
+ ## Module 4 - AWS Cloud Security
+ ### AWS Shared Responsibility Model
+ * Security and Compliance are a shared responbility between AWS and Customers
+ * AWS Responsibilities ( Security of the cloud )
+   * Physical security of data centers
+   * Hardware Infrastructures
+   * Software Infrastructures
+   * Network Infrastructures
+   * Virtual Infrastructures
+ * Customer Responsibilities ( Security in the cloud )
+   * Selecting and Securing any instance operating systems
+   * Securing the applications launched on AWS resources
+   * Security Group Configurations
+   * Firewall Configurations
+   * Network Configurations
+   * Account Management
+
+### AWS IAM 
+* Define users, groups, roles and types of accesses they are allowed
+* Free service
+* Handles authorisation and authentication
+* Components
+  * IAM User - person/application that can authenticate the AWS account. Each user must have an unique name with no white spaces
+  * IAM Group - Collection of users and are granted identical authorisation. Efficient mechanism to apply permissions. Can't have nested groups
+  * IAM Policy - Document that defines which resource and the level of access. Policies can be attached to users/groups
+  * IAM Role - Grant set of permissions for making AWS service requests. Provides temporary access.
+* Authentication for IAM Users
+  * Users/systems must prove their identity.
+  * Types of Access:
+    * Programmatic Access - Access Key ID and secret address key, when using API calls through AWS SDK, AWS CLI, or other tools
+    * Management Console Access - 12 digit account ID or alias, user name, and password. Then may be prompted for MFA ( Multi-Factor Authentication )
+* Authorisation for IAM Users
+  * What permissions a user/service/application should be granted. Happens after authentication
+  * By default, IAM users have no permissions to access any resource. Need to implicitly permit
+  * Policies are documents in JSON, list of permissions that allow or deny access to resources
+
+### IAM Policy
+* Types:
+  * Identity-Based Policies:
+    * Managed Policies: Standalone policies than you can attach to users/groups/roles
+    * Inline Policies: Policies embedded into an user group/role
+  * Resource-Based Policies:
+    * Attached to a resource
+    * All of them are inline policies
+
+### Root User
+* Have and retain full access to all resources
+* Create a user and an admin group with permissions that you require
+* Store Root user credentials and use the new user just created instead
+* AWS recommends not to use the root user
+
+### Securing AWS Account
+* Enable MFA
+* Use AWS CloudTrail - logs all the accesses to your AWS resources for 90 days ( can be extended )
+* Enable Billing Report 
 
 
 
