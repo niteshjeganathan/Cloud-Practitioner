@@ -923,3 +923,91 @@
   * Security
   * Fault Tolerance
   * Service Limits
+
+## Module 10 - Auto Scaling and Monitoring
+### Elastic Load Balancing
+* Distributes incoming application or network traffic across multiple targets
+* Types
+  * Application Load Balancer
+    * Operates at Application Layer ( Layer 7 )
+    * Routes traffic to targets based on content
+    * Advanced load balancing of HTTP and HTTPS traffic
+    * Ensures SSL/TLS ciphers and protocols
+  * Network Load Balancer
+    * Operates at the Network Layer ( Layer 4 )
+    * Routes traffic to targets based on IP
+    * Load balancing for TCP and UDP traffic
+    * Handles millions of requests per second while maintaining low latency
+    * Optimised to handle sudden and volatile traffic patterns
+  * Classic Load Balancer
+    * Basic Load Balancing
+    * Both at application and network layer
+    * Older implementation
+    * AWS recommends to use specific load balancers
+
+### Load Balancer 
+* Accepts incoming traffic from clients and routes requests to its registered targets in one or more availability zones
+* Listener checks for incoming requests
+* Configured with a protocol and a port from client and target
+* Also performs health checks and stops routing to unhealthy targets
+* When healthy again, it routes traffic again
+* With application and network LB, you register targets in target groups and route traffic to target groups
+* With classic load balancers, you register instances with the load balancers
+* Uses
+  * Achieve high availability and better fault tolerance for your applications
+  * Automatically load balance your containerised applications
+  * Elasticity and Scalability
+  * Virtual Private Cloud
+  * Hybrid Environments
+  * Invoke Lambda Functions over HTTPs
+* Monitoring:
+  * Amazon CloudWatch - publishes data points, retrieve statistics
+  * Access Logs - detail information about the requests that were made to your load balancer
+  * AWS CloudTrail - Capture detailed information about the calls that were made to Load Balancer
+
+ ### Amazon CloudWatch
+ * Monitoring and observability service
+ * Collect and track metrics real time
+ * Can create alarms on metrics
+ * Can use CloudWatch events to define rules that match incoming events
+ * System-wide visibility
+
+### CloudWatch Alarms
+* NameSpace - metric you want
+* Metric - variable you want to measure
+* Statistic - Can be average, sum, min, max
+* Period - time period
+* Conditions - static threshold, greater, lesser or equal to comparisons
+* Additional configuration Infomration
+* Actions - SNS topic, Auto scale, EC2 Action
+
+### Amazon EC2 Auto Scaling
+* Automatically add/remove EC2 instances
+* Fleet management features to monitor the health of your fleet
+* Dynamic and Predictive Scaling
+
+### Auto Scaling Group
+* Collection of EC2 instances treated as a logical group
+* Size of the auto scaling group depends on the number of instances you set as a desired capacity
+* Can specify the minimum number of instances, and maximum number of instances
+* To launch EC2 instances, an auto scaling group uses launch configuration
+  * AMI
+  * Instance Type
+  * IAM Role
+  * Additional Storage
+  * Security Groups
+  * EBS Volumes
+
+### Scaling Options
+* Maintain current instance levels at all times - Performs periodic health checks
+* Manual Scaling - Specify the change in max, min or desired capacity
+* Scheduled Scaling - Predictable Workloads
+* Dynamic on demand Scaling
+* Predictive Scaling - Uses history and well trained machine learning models
+
+### AWS Auto Scaling 
+* Scaling plans for resources
+  * Amazon EC2 instances and Spot Fleets
+  * ECS tasks
+  * DynamoDB tables and indexes
+  * Amazon Aurora Replicas
