@@ -51,6 +51,11 @@
 * Custom pricing - for unique requirements
 * AWS Free tier - gain hands-on experience
 
+### Reserved Instances 
+* AURI - All Upfront Reserved Instance
+* PURI - Partial Upfront Reserved Instance
+* NURI - No Upfront Reserved Instance
+
 ### TCO - Total Cost of Ownership
 * Server costs - Hardware, Software and Physical costs
 * Storage costs - Hardware, Administration and Facilities
