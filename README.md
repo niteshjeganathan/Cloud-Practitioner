@@ -804,3 +804,122 @@
 * Multiple copies of data across Availability Zones with continous backups to S3
 * Can use up to 15 read replicas
 * Instant Crash Recovery
+
+## Module 9 - Cloud Architecture
+### AWS Well-Architected Framework
+* Guide to build most secure, high performing, resilient, efficient infrastructure
+* Pillars
+  * Operational Excellence
+  * Security
+  * Reliability
+  * Performance Efficiency
+  * Cost Optimisation
+
+### Operational Excellence Pillar
+* Run and monitor systems to deliver business value
+* Managing and automating changes
+* Responding to events
+* Defining standards to successfully manage daily operations
+* Principles:
+  * Perform operations as code
+  * Annotate Documentations
+  * Make frequent, small, reversible changes
+  * Refine operations procedures frequently
+  * Anticipate failure
+  * Learn from failures
+* Foundational Questions
+  * Organisation
+  * Prepare
+  * Operate
+  * Evolve
+
+### Security Pillar
+* Protect information, system, assets
+* Protect confidentiality, integrity of data
+* Principles:
+  * Implement strong identity foundation
+  * Enable Traceability
+  * Apply security at all layers
+  * Automate best security practices
+  * Protect data in transit and at rest
+  * Keep people away from data
+  * Prepare for Security Events
+* Foundation Questions
+  * IAM
+  * Detection
+  * Infrastructure Protection
+  * Data Protection
+  * Incident Response
+
+### Reliability Pillar
+* Recover from disruptions
+* Dynamically acquire computing resources
+* Principles:
+  * Automate recovery from failure
+  * Test recovery procedures
+  * Scale horizontally to increase workload availability
+  * Stop guessing capacity
+  * Maange change in automation
+* Foundation Questions:
+  * Workload Architecture
+  * Change Management
+  * Failure Management
+
+### Performance Pillar
+* Use of resources efficiently
+* Mantain efficiency as demand evolves
+* Principles:
+  * Democratise advanced technologies
+  * Go global in minutes
+  * Use serverless architectures
+  * Experiment more often
+  * Consider mechanical sympathy
+* Foundational Questions
+  * Selection
+  * Review
+  * Monitoring
+  * TradeOffs
+
+### Cost Optimisation Pillar
+* Deliver business at the lowest cost possible
+* Avoid unnecessary costs
+* Principles:
+  * Implement Cloud Financial Management
+  * Adopt a consumption model
+  * Measure overall efficiency
+  * Stop spending money of undifferentiated heavy lifting
+  * Analyse and attribute expenditure
+* Foundation Questions
+  * Practice cloud financial Management
+  * Expenditure and Usage Awareness
+  * Cost-Effective
+  * Manage Demand and Supply resources
+  * Optimise over Time
+
+### Reliability
+* Provide functionality when desired by the user
+* Probability that an entire system will function as intended for a specified period
+* Mean Time between Failure = total time in service/total number of failures
+
+### Availability
+* Percentage of time that a system is operating normally
+* Percentage of uptime
+
+### Highly Available System
+* Can withstand some measure of degreadation while still remaining available
+* Downtime in minimum
+* Minimal human intervention required
+
+### Factors affecting Availability
+* Fault Tolerance - build in redundancy - detect failure and switch to redundant hardware - doesn't address software failures
+* Scalability
+* Recoverability
+
+### AWS Trusted Advisor
+* Online tool providing real-time guidance
+* Recommendatations:
+  * Cost Optimisations
+  * Performance
+  * Security
+  * Fault Tolerance
+  * Service Limits
