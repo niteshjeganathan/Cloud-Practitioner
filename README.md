@@ -272,5 +272,169 @@
 * on-demand downloads of AWS Security and Compliance documents
 * Can submit to security auditors directly
 
-### 
+## Module 5 - Networking and Content Delivery
+### OSI Model - Open Systems Interconnection Model
+* Application Layer - Layer 7 - HTTP, FTP, DHCP
+* Presentation Layer - Layer 6 - ASCI, ICA
+* Session Layer - Layer 5 - NetBIOS, RPC
+* Transport Layer - Layer 4 - TCP, UDP
+* Network Layer - Layer 3 - IP
+* Data Link Layer - Layer 2 - MAC
+* Physical Layer - Layer 1 - Signal (1's and 0's)
 
+### Amazon VPC
+* Logically isolated section of AWS Cloud where we can launch our AWS resources
+* Control over virtual networking resources - IP Addresses, subnets, route tables, gateways
+* IPv4 and IPv6 can be used
+* Multiple layers of security
+
+### VPC
+* Dedicated to one AWS account
+* Belongs to one AWS Region and can span through multiple availability zones
+* Can divide the VPC into several subnets
+
+### Subnets
+* Isolated range of VPC's
+* Range of IP's addresses that are a subset of VPC IP addresses
+* Belong to one availability zone
+* Could be private or public
+
+### IP Addressing in VPC
+* IPv4 CIDR block is assigned to a VPC, can't be changed later
+* Largest block is /28 and the smallest is /16
+* Subnets divide the IP address pool and subnets cannot overlap
+* For each CIDR block, AWS reserves IP addresses for: 
+  * Network Address
+  * VPC local router
+  * Doman Name System resolution
+  * Future use
+  * Network brodcasting address
+* Every instance gets a private IP address for internal networking
+* Public IP Addresses can also be assigned using auto-assign at the subnet level
+* Elastic IP Address:
+  * static and public IPv4 address
+  * Elastic IP address can be associated to an instance or a network interface
+  * Can mask the failure of an instance by instantly remapping
+  * All the attributes of the network interface can be moved from instance to instance
+  * Additional costs are associated with elastic IP address
+
+### Elastic Network Interface
+* Can be attached/detached from an instance in VPC
+* When the interface is moved, all the attributes and traffic follow the new instance
+* Each instance in a VPC has a default primary network interface providing it private IPv4 address
+* Primary network interface cannot be removed, but additional network interfaces can be added
+* Number of network interfaces depend on the type of instance
+
+### Route Tables
+* Contains set of routes to direct traffic
+* Each route specifies a destination ( CIDR Block ) and a target ( processing resource )
+* By default, every route table has a local route for internal communication
+* Local routes can not be deleted, but additional routes can be configured
+* Each subnet can have only one route table, but multiple subnets can have the same route table
+
+### Internet Gateway
+* Scalable, Redundant, and highly available component that enables communication between instances and public internet
+* Purpose:
+  * Provide a target for internet traffic
+  * Perform network address translation for instances that were assigned public IPv4 Address
+* To make a subnet public, we add an internet gateway and add a route to send non-local traffic to the internet gateway
+
+### NAT Gateway
+* Enables instances in a private subnet to access the internet but prevents the public internet from initiating connection
+* NAT gateway must exist inside a public subnet
+* Elastic IP address must be associated to the NAT gateway
+* Private subnets route tables should be updated to direct internet access through the NAT gateway
+* NAT gateway is recommended over NAT instance, since it's a managed service
+
+### VPC Sharing
+* Can share subnets with other AWS accounts in the same organisation
+* Advantages:
+  * Separation of Duties
+  * Ownership
+  * Security Groups
+  * Efficiencies
+  * No Hard Limits
+  * Optimised Costs
+
+### VPC Peering
+* privately routing traffic between two VPC
+* Instances in either VPC can communicate with each other as if they are on the same VPC
+* Has few restrictions:
+  * IP addresses cannot overlap
+  * Transitive Peering is not allowed
+  * You can have only one peering resource between the same two VPC's ( can only have one connection )
+
+### AWS Site-to-Site VPN
+* enables access to your remote network from the VPC
+* setup:
+  * Create new virtual gateway device ( VPN Gateway )
+  * Define configuration of VPN device or customer gateway
+  * Create custom route table
+  * Establish an AWS Site-to-Site connection
+  * Configure routing
+
+### AWS Direct Connect
+* enables a dedicated private connection between the network and one of the DX ( AWS Direct Connect ) locations.
+* Can reduce costs, provide a more consistent network connection
+* It uses open standard VLAN's
+* Direct Connect doesn't use encryption while AWS Site-to-Site VPN does
+
+### VPC Endpoints
+* enables you to privately connect to the VPC
+* types:
+  * Gateway
+    * Specify as a target for a route destined to S3 or DynamoDB
+  * Interface
+    * AWS PrivateLink simplifies security of data shared in cloud-based applications
+    * provides private connections between VPC's, AWS Services, and on-premises applications
+
+### AWS Transit Gateway
+* Network transit hub to interconnect VPC's instead of complicated peering connections
+* Also can be used to connect on-premises network
+* Requires only a single connection to the central gateway to VPC, on-premises data center, or remote office
+
+### Security Groups
+* Virtual firewall controlling inbound and outbound traffic
+* Act at instance level
+* By default, all inbound traffic is denied and all outbound traffic is allowed
+* Security groups are stateful, state information is kept even after request is processed
+* Only allow rules, no deny rules
+* All rules are evaluated before the decision to allow traffic
+
+### Network Access Control Lists
+* Work at the subnet level
+* Can specifiy rules that allow and deny, can specify ports and protocols
+* Each subnet is associated with an ACL
+* Default ACL's allow all inbound and outbound traffic
+* Network ACL's are stateless
+* Custom ACL's deny all inbound and outbound traffic unless specified
+* All ACL rules are numbered and evaluated in order
+
+### AWS Route 53
+* translates an internal name to the corresponding IP address
+* Can be used to check the health of your resources
+* Features traffic flow
+* Enables you to register domain names
+* Routing Policies:
+  * Simple Routing ( Round Robin ) - Single server environment
+  * Weighted Round Robin Routing - Assign weights to resources - Used in A/B testing or blue/green deployment
+  * Latency Routing
+  * Geolocation Routing - Based on location of users
+  * Geoproximity Routing - Based on location of resources
+  * Failover Routing - if primary site unreachable, route to backup site
+  * Multivalue answer Routing - Respond to DNS queries with up to eight healthy records selected at random
+
+### Content Delivery Network 
+* Globally distributed system of caching servers
+* Caches copies of commonly requested files
+* Delivers a local copy of requested content from a nearby cache edge or point of presence
+* Accelerates delivery of dynamic content
+* Improves application performance and scaling
+
+### Amazon Cloudfront
+* Relies on Route 53 Geolocation routing
+* When user requests content, the user is routed to the edge location that provides the lowest latency
+* When objects are less popular, they are moved from edge locations to regional edge caches
+
+
+ 
