@@ -610,3 +610,109 @@
 * Run and develop web applications
 * Automatic Scaling
 * Complete Resource Control
+
+
+## Module 7 - Storage
+### AWS EBS
+* Persistant Block Storage Volume
+* Each EBS volume is automatically replicated within it's availability zone
+* Low latency since it is directly connected to EC2 instances
+* Backed up automatically to Amazon S3 through snapshots
+* First snapshot is called a baseline snapshot, and any other snapshot only saves the differences from the baseline
+* Uses:
+  * Boot Volume and Storage volume
+  * Data storage with file system
+  * Database hosts
+  * Enterprise applications
+* Types:
+  * SSD - Can be used for Boot volumes
+    * Provisioned IOPS - highest performance - large database workloads
+    * General Purpose - most workloads
+  * HDD - Cannot be used for Boot volumes
+    * Throughput-Optimised - require consistent fast throughput - big data
+    * Cold - Large volume of data that is not frequently accessed
+* Cost Estimation
+  * Volumes - Charged by the GB
+  * IOPS - I/O is included in General SSD
+  * Snapshots - Added cost is GB/month
+  * Data Transfer - When you copy EBS snapshots through different regions then charged
+
+### Amazon S3
+* Object Level Storage
+* Stores data as objects in buckets
+* 11 9's of durability
+* You can store as many objects in a bucket as you want
+* Bucket names are universal and must be unique
+* Objects can be up to 5 TB
+* Data in S3 is redundantly stored across multiple facilities
+* Fine-grained control over who can access
+  * IAM policies
+  * S3 bucket policites
+  * Per-object access control lists
+  * Can encrypt data in transit or at rest
+* Includes event notifications when objects are uploaded, deleted
+
+### Various Storage Classes 
+* Amazon S3 Standard - low latency and high throughput
+* Amazon S3 Intelligent Tiering - Automatically move data to the most cost effective access tier
+* Amazon S3 Standard Infrequent Access - Data Accessed less frequently, but requires fast data access
+* Amazon S3 One Zone Infrequent Access - Data replicated only in one availability zone. Good for secondary backups
+* Amazon S3 Glacier - Low cost storage for data archiving
+* Amazon S3 Glacier Deep Archive - Long term retention upto years. Accesses are usually only once or twice in a year
+
+### Buckets
+* Logical containers for objects
+* Can have more than one bucket
+* Can restrict who accesses, deletes, adds objects to our buckets
+* URL Styles to access buckets:
+  * Bucket path-style URL endpoint - When we need to access objects
+  * Bucket virtual-style URL endpoint - as a website for static data
+* Buckets belong to one region and are replicated in many availability zones
+* Can access buckets through:
+  * Console
+  * AWS CLI
+  * AWS SDK
+  * REST based endpoints
+
+### EBS Cost Estimation
+* Costs vary with regions
+* Factors:
+  * Types of storage class
+  * Amount of Storage
+  * Requests - PUT, COPY, POST, LIST, GET
+  * Data Transfer - Crossing boundary of Region
+
+### Amazon EFS
+* Multiple virtual machines can access at the same time
+* Shared Filed system that uses NFS
+* File Storage in AWS Cloud
+* Big Data Analytics, Media Processing Workflows, Content Management
+* Petabyte-scale, Low latency File System
+* Shared Storage
+* Elastic Capacity
+* Each Availability zone has a mount target
+* If there are more than one subnet in availability zone, only one mount is created
+* Setup:
+  * Create EC2 resources and launch your Amazon EC2 instance
+  * Create your EFS file system
+  * Create mount targets in appropriate subnets
+  * Connect EC2 to mount targets
+  * Verify resources and protection of your AWS account
+
+### Amazon Glacier
+* Secure, durable, extremely-low cost storage for data archiving
+* Cannot retrieve data immediately
+* Terms:
+  * Archive - Any object
+  * Vault - Container for storing archives
+  * Vault Policy - Vault Access Policy and Vault Lock Policy
+* Retrieving Data:
+  * Expedited Retrievals - 1-5 mins ( highest cost )
+  * Standard Retrievals - 3-5 hours
+  * Bulk Retrievals - 5-12 hours ( lowest cost )
+
+### Lifecyle Policies
+* Delete or move objects according to their age
+* Amazon S3 Standard -> Amazon S3 Standard Infrequent Access -> Amazon S3 Glacier -> Deleted
+
+
