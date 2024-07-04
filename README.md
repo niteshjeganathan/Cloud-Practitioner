@@ -436,5 +436,177 @@
 * When user requests content, the user is routed to the edge location that provides the lowest latency
 * When objects are less popular, they are moved from edge locations to regional edge caches
 
+## Module 6 - Compute
+### Compute Services
+* EC2 - Virtual Machines
+* EC2 Auto Scaling - automatically launch/terminate EC2 instances
+* ECR - Store and retrieve docker images
+* ECS - Container orchestration service
+* VMWare Cloud on AWS - enables you to provision a hybrid cloud without custom hardware
+* AWS Elastic Beanstalk - Run and manage web applications
+* AWS Lambda - Serverless compute solution
+* EKS - Kubernetes on AWS
+* Lightsail - Building an application or website
+* Batch - Running batch jobs at scale
+* Fargate - Run containers without having to manage servers or clusters
+* Outposts - run select AWS services in your on-premises data center
+* Serverless Application Repository - discover, deploy, publish serverless applications
 
- 
+### Launching EC2
+* AMI
+  * Amazon Machine Image - template
+  * Sources
+    * QuickStart - prebuilt AMI - linux and windows
+    * My AMI's
+    * AWS MarketPlace
+    * Community AMI
+* Choosing an instance type
+  * CPU, RAM, Storage, Networking Bandwidth Requirements
+  * Placement groups to influcence the placement of interdependent instances
+* Specifiying network settings
+  * Region can not be changed once created
+  * VPC and subnets can be chosen
+  * If no VPC, default VPC is chosen and public IP is assigned
+* Attaching an IAM Role
+* Attaching User Data Script - Automate installations and configurations - Runs only the first time but can be configured
+* Storage
+  * AWS EBS - Retains data even after instance is stopped
+  * EC2 Instance Store - Lost when instance is stopped
+* Adding Tags
+* Security Groups
+* Identifying or Creating a key pair - Encrypting Login Information
+
+### States of Instances
+* Pending
+* Running
+* Rebooting
+* Stopping
+* Stopped
+* Shutting Down
+* Terminated
+
+### Elastic IP Address
+* Each instance that recieves a public IP address is also given an external DNS hostname
+* For consistent IP address, need to use Elastic IP Address
+* By default, 5 Elastic IP addresses per region are given ( Soft Limit )
+
+### Amazon CloudWatch
+* Monitor your instances
+* Recorded for 15 months
+* Basic Monitoring - 5 min periods
+* Detailed Monitoring - 1 min periods
+
+### Pricing Models
+* On-Demand Instances
+  * Pay by the hour
+  * AWS Free Tier
+  * No long term committments
+  * Low cost and flexibility
+  * Short term/Spiky Workloads
+  * Application development/Testing
+* Dedicated Hosts
+  * Physical server with EC2 instance capacity fully dedicated to your use
+  * Save money on licencing costs
+  * Compliance and Regulatory Requirements
+  * Bring your own Licence ( BYOL )
+* Dedicated Instances
+  * Instances that run in a VPC on hardware dedicated to single customer
+* Reserved Instances
+  * Full, partial or no upfront payments for discounted prices
+  * 1-year or 3-year term
+* Spot Instances
+  * Instances run as long as they are available
+  * 2 minute notification before it is interrupted
+  * Interruptions can stop/hibernate/terminate
+  * Large scale
+  * Dynamic workload
+  * Flexible start and end times
+  * Application only feasible at very low cost
+  * Users with urgent computing needs for large amounts of capacity
+* Per second Billing
+  * On-Demand Instances
+  * Reserved Instances
+  * Spot Instances
+
+### Cost Optimisation
+* Right Size
+* Increase Elasticity
+* Optimal Pricing Model
+* Optimise Storage Choices
+
+### Containers
+* Operating System virtualisation
+* Smaller than virtual machines
+* Benefits
+  * Repeatable
+  * Self Contained Environment
+  * Software runs the same in different enviroments
+  * Faster to launch or terminate resources
+
+### Docker
+* Packages software into containers
+* Containers are created using docker images
+
+### Amazon ECS
+* Scalable high-performance container management service, orchestration of docker container
+* Using ECS:
+  * Create task definition
+    * Describes 1-10 docker containers
+    * Blueprint of application
+  * Task is instantiation of a task definition within a cluster. You can specify the number of tasks in your cluster
+  * ECS Task Scheduler will place tasks in cluster
+  * The cluster consists of a group of EC2 instances each of which is running a Amazon ECS Container Agent
+
+### Amazon Cluster Options
+* Networking only cluster - powered by Fargate - AWS Manages the cluster
+* EC2 Linux + Networking Cluster
+* EC2 Windows + Networking Cluster
+
+### Kubernetes
+* Container Orchestration
+* Automates:
+  * Container Provisioning
+  * Networking
+  * Load Distribution
+  * Load Distribution
+  * Scaling
+
+### Amazon EKS
+* Enables you to run Kubernetes on AWS
+* Certified Kubernetes Comfortmant
+* Supports Linux and Windows Containers
+* Manage clusters of Amazon EC2 compute instances
+* Run containers that are orchestrated on those instances
+
+### Amazon ECR
+* Fully managed docker container registry
+* store, manage, deploy docker images
+
+### AWS Lambda
+* Lambda function contains the code we want to run
+* Triggered either on schedule, or due to event
+* Only paid for the compute time consumed
+* Benefits:
+  * Multiple programming languages
+  * Automated Administration
+  * Built-in Fault tolerance
+  * Orchestration of mulitple functions
+  * Pay-per-use pricing
+* Event Sources
+  * Some services publish events to invoke
+  * Lambda can poll resources in other services
+  * Some services can directly invoke
+* Limits
+  * Soft Limits
+    * Concurrent executions: 1000
+    * Function and Layer Storage: 75 GB
+  * Hard Limits
+    * Maximum function memory allocation: 10,240 MB
+    * Function Timeout: 15 mins
+    * Deployment package size: 250 MB
+    * Container Image Code Package Size: 10 GB
+
+### AWS Elastic Beanstalk
+* Run and develop web applications
+* Automatic Scaling
+* Complete Resource Control
