@@ -122,5 +122,29 @@
   * Urgent
   * Critical
 
+## Module 3 - AWS Global Infrastructure Overview 
+### AWS Infrastructure
+* Region
+  * Physical geographical location
+  * To achieve fault tolerance, AWS Regions are isolated from each other
+  * Resources in one region aren't replicated automatically in another region
+  * Contains one or more avalability zones
+* Availability Zone
+  * Includes multiple data centers
+  * Physically separated from other availability zones
+  * All availability zones are interconnected with high bandwidth and low latency networking
+  * It is advised to replicate data in different availability zones
+* Data Centers
+  * Foundation of AWS infrastructure
+  * Data centers can not be specified
+* ODM's
+  * Original Device Manufacturers design and manufacturer products based on specifications from a second company
+  * Second company then rebrands it
+* Points of Presence
+  * Located among all major countries in the world
+  * Delivers a better near real-time user experience
+  * Edge locations are located througout the world
+  * Regional edge caches have data that is not frequently accessed enough to remain in an edge location
+
 
 
