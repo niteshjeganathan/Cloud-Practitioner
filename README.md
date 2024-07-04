@@ -716,3 +716,91 @@
 * Amazon S3 Standard -> Amazon S3 Standard Infrequent Access -> Amazon S3 Glacier -> Deleted
 
 
+## Module 8 - Databases
+### Amazon RDS
+* Cost-efficient and resizable capacity while automating administrative tasks
+* AWS manages installing, patching, automatic backups and high availability.
+* AWS RDS Instance:
+  * Isolated database environment that you can contain multiple user created databases
+  * Instance class and Instance storage can be specified
+  * Can choose database engine:
+    * MySQL
+    * Amazon Aurora
+    * Microsoft SQL
+    * Postgre SQL
+    * MariaDB
+    * Oracle
+
+### Multi AZ deployment
+* Generates a standby copy of database instance in another availability zone within the same VPC
+* Every transaction is replicated
+* In case of failure, the standby database is brought up as the new main instance
+* Since DNS will be used, no changes are required in the application level
+
+### Amazon Read Replicas
+* MySQl, MariaDB, Postgre SQL, Amazon Aurora
+* Updates made to the database are asynchronously copied to the read replica instance
+* Reduce traffic to main instance by redirecting the read queries to the read replica instance
+* Promoting to main instance is possible, but requires manual action since asynchronous updates are being made
+* Read replicas can be created in different regions, so more fault-tolerant and lower latency
+
+### When to use Amazon RDS
+* Complex Transactions
+* Medium to high queries or write rate
+* No more than single worker node or shard
+* High Durability
+
+### When not to use Amazon RDS
+* Massive read/write rates
+* Sharding due to high data size or throughput demands
+* Simple GET and PUT requests that a NoSQL database can handle
+* Relational database management system customisation
+
+### Billing Characteristics of RDS
+* Clock Hour Billing
+* Database Characteristics
+* Database purchase type
+* Number of database instances
+* Provisioned Storage
+* Requests
+
+### Amazon DynamoDB
+* Fast, flexible, NoSQL database
+* Consistent, single digit millisecond latency at any scale
+* System automatically adds paritions
+* Flexible Schema
+* Core components:
+  * Table - collection of data
+  * Items - Group of attributes
+  * Attributes - Fundamental data element
+  * Primary Key
+    * Partition Key - Simple primary key, composed of one attribute called sort key
+    * Partition Key and Sort key are also called as the composite primary key
+
+### Amazon RedShift
+* Fully managed data warehouse
+* Analyse all data using standard SQL and existing business Intelligence tools
+* Complex analytic queries against petabytes of structured data using sophisticated query optimisation, columnar storage on high performance local disks, parallel processing
+* Parallel Processing Architecture
+  * Cluster of leader and compute nodes
+  * Leader node manages communication with client programs and all communication with compute nodes
+  * Parses and develops plans for compute nodes
+  * Compiles codes for individual elements of the plan
+  * Compute nodes run compiled codes and returns back intermediate results
+  * All data are aggregated
+* Supports Standard SQL
+* Also provides Java Database Connectivity ( JBDC ) and Open Database Connectivity ( OBDC ) connectors
+
+### Amazon Aurora
+* MySQL and Postgre SQL compatible RD built for cloud
+* Reduce costs and are more reliable
+* Fully managed service
+  * Provisioning
+  * Patching
+  * Backup
+  * Recovery
+  * Failure Detection
+  * Repair
+* Multiple copies of data across Availability Zones with continous backups to S3
+* Can use up to 15 read replicas
+* Instant Crash Recovery
