@@ -130,7 +130,8 @@
 
 ### AWS Shield
 * DDoS Protection Service
-* AWS Shield Advanced is available to everyone
+* AWS Shield Standard is available to everyone
+* AWS Shield Advanced is an optional paid service
 * Contacting DDoS Response Team requires Enterprise Support or Business Support from AWS Support
 
 ### AWS Chime
@@ -219,5 +220,57 @@
 * Use AWS CloudTrail - logs all the accesses to your AWS resources for 90 days ( can be extended )
 * Enable Billing Report 
 
+### Security Features of AWS Organisations
+* Groups
+* Integration of AWS IAM
+* Service Control Policies
 
+### Service Control Policies ( SCP's )
+* provides the maximum available control one user could have
+* Also JSON documents
+* Not a replacement for IAM, since it never grants permissions
+
+### AWS Key Management Service ( KMS )
+* Create and manage encryption keys to encrypt data
+* Secure and resilient service that users hardware security modules ( HSM's ) approved by Federal Information Processing Standards ( FIPS )
+* Integrates with CloudTrail to log all the accesses of the encryption keys
+* Customer master keys ( CMK's ) are used to control access to the data encryption keys
+* You can create new keys when you want and restrict their access
+* Can import keys also
+
+### AWS Incognito 
+* Control access to AWS resources from the applications
+* User sign-up, sign-up, log-in to your web and mobile applications
+* Uses common identity management standards, like Security Assertion Markup Language 2.0 ( SAML )
+
+### Encryption 
+* Data at rest:
+  * Data that is physically stored in a disk or a tape.
+  * Using AWS KMS handles encryption and decryption transparently without modifying our application
+* Data in transit:
+  * Data that is moving in the internet is secured using Transport Layer Security ( TLS )
+  * TLS was formerly called SSL
+  * AWS Certificate Manager provisions, manages, deploys, renews SSL or TLS certificates for your AWS Services
+
+### Securing Amazon S3
+* By default, all S3 buckets are private and protected and can be accessed by users that are explicitly granted access
+* Amazon S3 Block Public Access - Overrides any policy, avoids unintended access
+* IAM Policy
+* Bucket Policy - Policies applied to specific buckets
+* ACL - applied on buckets or objects
+* AWS Trusted Advisor - bucket permission check feature to check global checks
+
+### AWS Config
+* Assess, audit, evaluate the configurations of AWS resources
+* Monitors and records AWS resouces configurations
+* Detailed resource configuration histories, and determine overall compliance against internal guidelines
+* Compliance auditing, Security Analysis, Change management, Operational Troubleshooting
+* Non compliant resources are flagged
+* AWS Config is a regional service, need to be enabled in every region manually
+
+### AWS Artifact
+* on-demand downloads of AWS Security and Compliance documents
+* Can submit to security auditors directly
+
+### 
 
